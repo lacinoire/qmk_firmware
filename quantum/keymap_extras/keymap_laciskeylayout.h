@@ -1,4 +1,4 @@
-/* Copyright 2016 Stephen Bösebeck
+ /* Copyright 2016 Stephen Bösebeck
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,6 +76,12 @@
 #define LACI_SLASH DE_OSX_LESS // < and > and |
 #define LACI_PLUS DE_OSX_MINS // - and _
 
+// modifiers
+#define LACI_LCMD KC_LALT
+#define LACI_RCMD KC_RALT
+#define LACI_LALT KC_LGUI
+#define LACI_RALT KC_RGUI
+
 // shifted characters
 //#define DE_OSX_RING LSFT(DE_OSX_CIRC) // °
 //#define DE_OSX_EXLM LSFT(KC_1) // !
@@ -108,6 +114,6 @@
 #define DE_OSX_AT  LALT(DE_OSX_L) // @
 #define DE_OSX_EURO LALT(KC_E) // €
 #define DE_OSX_TILD LALT(DE_OSX_N) // ~
-#define DE_OSX_PIPE LALT(DE_OSX_7) // */ |
+#define DE_OSX_PIPE LALT(DE_OSX_7) // */
 
 #endif
