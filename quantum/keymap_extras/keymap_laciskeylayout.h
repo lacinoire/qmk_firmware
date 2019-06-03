@@ -81,6 +81,10 @@
 #define LACI_RCMD KC_RALT
 #define LACI_LALT KC_LGUI
 #define LACI_RALT KC_RGUI
+#define LACI_MOD_LCMD MOD_LALT
+#define LACI_MOD_RCMD MOD_RALT
+#define LACI_MOD_LALT MOD_LGUI
+#define LACI_MOD_RALT MOD_RGUI
 
 // shifted characters
 //#define DE_OSX_RING LSFT(DE_OSX_CIRC) // °
