@@ -20,7 +20,7 @@ enum custom_keycodes {
 
 //define modifiers
 #define MODS_SHIFT_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
-#define MODS_CTRL_MASK  (MOD_BIT(KC_LCTL)|MOD_BIT(KC_RCTRL))
+#define MODS_CTRL_MASK  (MOD_BIT(KC_LCTL)|MOD_BIT(KC_RCTL))
 #define MODS_ALT_MASK  (MOD_BIT(LACI_LALT)|MOD_BIT(LACI_RALT))
 #define MODS_CMD_MASK  (MOD_BIT(LACI_LCMD)|MOD_BIT(LACI_RCMD))
 
@@ -30,45 +30,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   ?    |   8  |   6  |   4  |   2  |   0  | ESC  |           |   =  |   1  |   3  |   5  |   7  |   9  |   @    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   (    |   Q  |   K  |   S  |   R  |   Z  |  Alt |           | Alt  |   X  |   T  |   P  |   C  |   V  |   )    |
+ * |   (    |   Q  |   K  |   S  |   R  |   Z  |  Alt |           |  V+  |   X  |   T  |   P  |   C  |   V  |   )    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |   '    |   N  |   A  |   E  |   I  |   Y  |------|           |------|   J  |   O  |   U  |   L  |   F  |   W    |
- * |--------+------+------+------+------+------| Shift|           |alfred|------+------+------+------+------+--------|
+ * |   ?    |   N  |   A  |   E  |   I  |   Y  |------|           |------|   J  |   O  |   U  |   L  |   F  |   W    |
+ * |--------+------+------+------+------+------| Shift|           |  V-  |------+------+------+------+------+--------|
  * |   /    |   <  |   D  |   G  |   M  |   ,  |      |           |      |   +  |   H  |   B  |   .  |   -  | '      |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |SYMB | /MDIA | /SYMB | /Left | /Right|                                       |  Left  | Up | Down |Right| MDIA |
+ *   | SYMB |  B-  |  B+  | Redo | Undo |                                       | Left |  Up  | Down | Right| MDIA |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | Cmd  | Ctrl |       | Ctrl  | Cmd  |
+ *                                        | Del  |  Cut |       | Prev | Alfr |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | Home |       | Cmd  |      |      |
- *                                 | Enter|Backsp|------|       |------|  Tab |Space |
- *                                 |      |ace   | End  |       | Alt  |      |      |
+ *                                 |      |      | Copy |       | Next |      |      |
+ *                                 | Enter| Tab  |------|       |------|Backsp|Space |
+ *                                 |      |      | Paste|       | Pause|      |      |
  *                                 `--------------------'       `--------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        LACI_QUESTION,      LACI_8,       LACI_6,                    LACI_4, LACI_2, LACI_0,    KC_ESC,
-        LACI_LBRACE,        LACI_Q,       LACI_K,                    MT(MOD_LCTL, LACI_S),      LACI_R,               LACI_Z,     LACI_LALT,
-        LACI_APOSTROPHE,    LACI_N,       MT(LACI_MOD_LCMD, LACI_A), MT(LACI_MOD_LALT, LACI_E), MT(MOD_LSFT, LACI_I), LACI_Y,
-        LACI_SLASH,         LACI_SMALLER, LACI_D,                    LACI_G,                    LACI_M,               LACI_KOMMA, KC_LSHIFT,
-        MO(SYMB),           MO(MDIA),     MO(SYMB),                  KC_LEFT,                   KC_RGHT,
+        LACI_QUESTION,      LACI_8,             LACI_6,                    LACI_4, LACI_2, LACI_0,    KC_ESC,
+        LACI_LBRACE,        LACI_Q,             LACI_K,                    MT(MOD_LCTL, LACI_S),      LACI_R,               LACI_Z,     LACI_LALT,
+        LACI_QUESTION,      LACI_N,             MT(LACI_MOD_LCMD, LACI_A), MT(LACI_MOD_LALT, LACI_E), MT(MOD_LSFT, LACI_I), LACI_Y,
+        LACI_SLASH,         LACI_SMALLER,       LACI_D,                    LACI_G,                    LACI_M,               LACI_KOMMA, KC_LSHIFT,
+        MO(SYMB),           KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,          LSFT(LALT(LACI_V)),        LALT(LACI_Z),
 
-                                                         LACI_LCMD, KC_LCTRL,
-                                                                    KC_INSERT,
-                                               KC_ENTER, KC_BSPC,   KC_DELETE,
+                                                        KC_DELETE, LALT(LACI_X),
+                                                                   LALT(LACI_C),
+                                              KC_ENTER, KC_TAB,   LALT(LACI_V),
         // right hand
             LACI_EQUALS,    LACI_1,    LACI_3,               LACI_5,                    LACI_7,                    LACI_9,     LACI_AT,
-            LACI_RALT,      LACI_X,    LACI_T,               MT(MOD_RCTL, LACI_P),      LACI_C,                    LACI_V,     LACI_RBRACE,
+            KC__VOLUP,      LACI_X,    LACI_T,               MT(MOD_RCTL, LACI_P),      LACI_C,                    LACI_V,     LACI_RBRACE,
                             LACI_J,    MT(MOD_RSFT, LACI_O), MT(LACI_MOD_RALT, LACI_U), MT(LACI_MOD_RCMD, LACI_L), LACI_F,     LACI_W,
-            LALT(KC_SPACE), LACI_PLUS, LACI_H,               LACI_B,                    LACI_DOT,                  LACI_MINUS, LACI_APOSTROPHE,
+            KC__VOLDOWN,    LACI_PLUS, LACI_H,               LACI_B,                    LACI_DOT,                  LACI_MINUS, LACI_APOSTROPHE,
                                        KC_LEFT,              KC_UP,                     KC_DOWN,                   KC_RIGHT,   MO(MDIA),
 
-            KC_RCTRL,  LACI_RCMD,
-            LACI_LCMD,
-            LACI_LALT, KC_TAB,    KC_SPACE
+            KC_MEDIA_REWIND,       LGUI(KC_SPACE),
+            KC_MEDIA_FAST_FORWARD,
+            KC_MEDIA_PLAY_PAUSE,   KC_BSPACE,   KC_SPACE
     ),
 /* Keymap 1: Symbol Layer
  *
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // SYMBOLS
 [SYMB] = LAYOUT_ergodox(
-       // left hand
+       // left handi
        VRSN,   KC_F8,  KC_F6,  KC_F4,  KC_F2,  KC_F10,  KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,  KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,
@@ -206,55 +206,53 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-#ifdef RGBLIGHT_COLOR_LAYER_0
-  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-#endif
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+    ergodox_right_led_3_on();
+    #ifdef RGBLIGHT_ENABLE
+      rgblight_init();
+    #endif
+    #ifdef RGBLIGHT_COLOR_LAYER_0
+      rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+    #endif
 };
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
   uint8_t modifiers = get_mods();
-  uint8_t led_usb_state = host_keyboard_leds();
   uint8_t one_shot = get_oneshot_mods();
-
-  ergodox_board_led_off();
-  ergodox_right_led_1_off();
-  ergodox_right_led_2_off();
-  ergodox_right_led_3_off();
 
   // Since we're not using the LEDs here for layer indication anymore,
   // then lets use them for modifier indicators.  Shame we don't have 4...
   // Also, no "else", since we want to know each, independently.
   if ( ( modifiers | one_shot ) & MODS_SHIFT_MASK) {
-      rgblight_sethsv(HSV_AZURE, 0);
-  }
-  else {
+      rgblight_sethsv_range(HSV_CYAN, 11, 15);
+  } else {
     #ifdef RGBLIGHT_COLOR_LAYER_0
-      rgblight_setrgb_at(RGBLIGHT_COLOR_LAYER_0, 0);
+      rgblight_setrgb_range(RGBLIGHT_COLOR_LAYER_0, 11, 15);
     #endif
   }
   if ( ( modifiers | one_shot ) & MODS_ALT_MASK) {
-      rgblight_sethsv(HSV_CYAN, 3);
-  }
-  else {
+      rgblight_sethsv_range(HSV_BLUE, 7, 11);
+  } else {
     #ifdef RGBLIGHT_COLOR_LAYER_0
-      rgblight_setrgb_at(RGBLIGHT_COLOR_LAYER_0, 3);
+      rgblight_setrgb_range(RGBLIGHT_COLOR_LAYER_0, 7, 11);
     #endif
   }
   if ( ( modifiers | one_shot ) & MODS_CMD_MASK) {
-      rgblight_sethsv(HSV_TURQUOISE, 6);
-  }
-  else {
+      rgblight_sethsv_range(HSV_PURPLE, 3, 7);
+  } else {
     #ifdef RGBLIGHT_COLOR_LAYER_0
-      rgblight_setrgb_at(RGBLIGHT_COLOR_LAYER_0, 6);
+      rgblight_setrgb_range(RGBLIGHT_COLOR_LAYER_0, 3, 7);
     #endif
   }
   if ( ( modifiers | one_shot ) & MODS_CTRL_MASK) {
-      rgblight_sethsv(HSV_BLUE, 9);
-  }
-  else {
+      rgblight_sethsv_range(HSV_MAGENTA, 0, 3);
+  } else {
     #ifdef RGBLIGHT_COLOR_LAYER_0
-      rgblight_setrgb_at(RGBLIGHT_COLOR_LAYER_0, 9);
+      rgblight_setrgb_range(RGBLIGHT_COLOR_LAYER_0, 0, 3);
     #endif
   }
 
@@ -270,7 +268,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   uint8_t layer = biton32(state);
   switch (layer) {
       case 0:
-        ergodox_right_led_1_on();
+        ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_0
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
         #else
@@ -286,7 +284,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         #endif
         break;
       case 2:
-        ergodox_right_led_3_on();
+        ergodox_right_led_1_on();
         #ifdef RGBLIGHT_COLOR_LAYER_2
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
         #endif
