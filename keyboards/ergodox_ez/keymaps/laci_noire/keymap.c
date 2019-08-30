@@ -24,6 +24,14 @@ enum custom_keycodes {
 #define MODS_ALT_MASK  (MOD_BIT(LACI_LALT)|MOD_BIT(LACI_RALT))
 #define MODS_CMD_MASK  (MOD_BIT(LACI_LCMD)|MOD_BIT(LACI_RCMD))
 
+//Tap Dance Declarations
+enum {
+  TD_ESC_CAPS = 0
+};
+
+//In Layer declaration, add tap dance item in place of a key code
+//TD(TD_ESC_CAPS)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -50,13 +58,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        LACI_QUESTION,      LACI_8,             LACI_6,                    LACI_4, LACI_2, LACI_0,    KC_ESC,
+        SH_TT,      LACI_8,             LACI_6,                    LACI_4, LACI_2, LACI_0,    TD(TD_ESC_CAPS),
         LACI_LBRACE,        LACI_Q,             LACI_K,                    MT(MOD_LCTL, LACI_S),      LACI_R,               LACI_Z,     LACI_LALT,
         LACI_QUESTION,      LACI_N,             MT(LACI_MOD_LCMD, LACI_A), MT(LACI_MOD_LALT, LACI_E), MT(MOD_LSFT, LACI_I), LACI_Y,
         LACI_SLASH,         LACI_SMALLER,       LACI_D,                    LACI_G,                    LACI_M,               LACI_KOMMA, KC_LSHIFT,
-        MO(SYMB),           KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,          LSFT(LALT(LACI_V)),        LALT(LACI_Z),
+        MO(SYMB),           KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,          LSFT(LALT(LACI_Z)),        LALT(LACI_Z),
 
-                                                        KC_DELETE, LALT(LACI_X),
+                                                        LALT(LACI_X), LALT(LACI_A),
                                                                    LALT(LACI_C),
                                               KC_ENTER, KC_TAB,   LALT(LACI_V),
         // right hand
@@ -329,4 +337,11 @@ uint32_t layer_state_set_user(uint32_t state) {
     }
 
   return state;
+};
+
+//Tap Dance Definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Esc, twice for Caps Lock
+  [TD_ESC_CAPS]  = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_F24)
+// Other declarations would go here, separated by commas, if you have them
 };
