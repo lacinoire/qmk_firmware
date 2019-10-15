@@ -47,26 +47,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | SYMB |  B-  |  B+  | Redo | Undo |                                       | Left |  Up  | Down | Right| MDIA |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | Del  |  Cut |       | Prev | Alfr |
+ *                                        | Contx|  Cut |       | Prev | Alfr |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | Copy |       | Next |      |      |
- *                                 | Enter| Tab  |------|       |------|Backsp|Space |
+ *                                 | Enter|Backsp|------|       |------|  Tab |Space |
  *                                 |      |      | Paste|       | Pause|      |      |
- *                                 `--------------------'       `--------------------'
+ *                                 `--------------------'       `--------------------'    build with: make ergodox_ez:laci_noire
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         SH_TT,      LACI_8,             LACI_6,                    LACI_4, LACI_2, LACI_0,    TD(TD_ESC_CAPS),
-        LACI_LBRACE,        LACI_Q,             LACI_K,                    MT(MOD_LCTL, LACI_S),      LACI_R,               LACI_Z,     LACI_LALT,
+        LACI_LBRACE,        LACI_Q,             LACI_K,                    MT(MOD_RCTL, LACI_S),      LACI_R,               LACI_Z,     LACI_LALT,
         LACI_QUESTION,      LACI_N,             MT(LACI_MOD_LCMD, LACI_A), MT(LACI_MOD_LALT, LACI_E), MT(MOD_LSFT, LACI_I), LACI_Y,
         LACI_SLASH,         LACI_SMALLER,       LACI_D,                    LACI_G,                    LACI_M,               LACI_KOMMA, KC_LSHIFT,
         MO(SYMB),           KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,          LSFT(LALT(LACI_Z)),        LALT(LACI_Z),
 
-                                                        LALT(LACI_X), LALT(LACI_A),
+                                                        LALT(KC_SPACE), LALT(LACI_A),
                                                                    LALT(LACI_C),
-                                              KC_ENTER, KC_TAB,   LALT(LACI_V),
+                                              KC_ENTER, KC_BSPACE,   LALT(LACI_V),
         // right hand
             LACI_EQUALS,    LACI_1,    LACI_3,               LACI_5,                    LACI_7,                    LACI_9,     LACI_AT,
             KC__VOLUP,      LACI_X,    LACI_T,               MT(MOD_RCTL, LACI_P),      LACI_C,                    LACI_V,     LACI_RBRACE,
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
             KC_MEDIA_REWIND,       LGUI(KC_SPACE),
             KC_MEDIA_FAST_FORWARD,
-            KC_MEDIA_PLAY_PAUSE,   KC_BSPACE,   KC_SPACE
+            KC_MEDIA_PLAY_PAUSE,   KC_TAB,   KC_SPACE
     ),
 /* Keymap 1: Symbol Layer
  *
