@@ -59,14 +59,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         SH_TT,      LACI_8,             LACI_6,                    LACI_4, LACI_2, LACI_0,    TD(TD_ESC_CAPS),
-        LACI_LBRACE,        LACI_Q,             LACI_K,                    MT(MOD_RCTL, LACI_S),      LACI_R,               LACI_Z,     LACI_LALT,
-        LACI_QUESTION,      LACI_N,             MT(LACI_MOD_LCMD, LACI_A), MT(LACI_MOD_LALT, LACI_E), MT(MOD_LSFT, LACI_I), LACI_Y,
+        LACI_LBRACE,        LACI_Q,             LACI_K,                    LACI_S,      LACI_R,               LACI_Z,     LACI_LALT,
+        LACI_QUESTION,      LACI_N,             LACI_A, LACI_E,  LACI_I, LACI_Y,
         LACI_SLASH,         LACI_SMALLER,       LACI_D,                    LACI_G,                    LACI_M,               LACI_KOMMA, KC_LSHIFT,
         MO(SYMB),           KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,          LSFT(LALT(LACI_Z)),        LALT(LACI_Z),
 
-                                                        LALT(KC_SPACE), LALT(LACI_A),
-                                                                   LALT(LACI_C),
-                                              KC_ENTER, KC_BSPACE,   LALT(LACI_V),
+                                                        KC_LSHIFT, KC_LCTL,
+                                                                   LACI_LCMD,
+                                              KC_ENTER, KC_BSPACE,   LACI_LALT,
         // right hand
             LACI_EQUALS,    LACI_1,    LACI_3,               LACI_5,                    LACI_7,                    LACI_9,     LACI_AT,
             KC__VOLUP,      LACI_X,    LACI_T,               MT(MOD_RCTL, LACI_P),      LACI_C,                    LACI_V,     LACI_RBRACE,
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |         |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | EPRM  |KPPlus| PGUP |PGDOWN|     |                                       |      |    . |   0  |   =  |      |
+ *   | EPRM  |      | PGUP |PGDOWN|      |                                       |      |    . |   0  |   =  |      |
  *   `-----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |Animat|      |       |Toggle|Solid |
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,KC_TRNS,KC_TRNS,  KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-          EPRM,KC_KP_PLUS,KC_PGUP,KC_PGDOWN,KC_TRNS,
+          EPRM,KC_TRNS,KC_PGUP,KC_PGDOWN,KC_TRNS,
                                        RGB_MOD,KC_TRNS,
                                                KC_TRNS,
                                RGB_VAD,RGB_VAI,KC_TRNS,
